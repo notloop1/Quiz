@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu">
+   <children>
+      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="200.0" layoutY="192.0" prefHeight="25.0" prefWidth="200.0" promptText="Enter Username  ">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </TextField>
+      <TextFlow layoutX="230.0" layoutY="49.0" prefHeight="50.0" prefWidth="125.0">
+         <children>
+            <Text fx:id="MainMenuTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to ShapesQuiz!" wrappingWidth="302.759765625">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </TextFlow>
+      <Accordion />
+      <Text fx:id="MainMenuTitle1" layoutX="214.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Username to Begin" wrappingWidth="257.759765625">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="NextButton" layoutX="263.0" layoutY="247.0" mnemonicParsing="false" onAction="#switch2QuizScene" text="Next " />
+   </children>
+</AnchorPane>

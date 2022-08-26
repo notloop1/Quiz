@@ -30,6 +30,6 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button fx:id="NextButton" layoutX="263.0" layoutY="247.0" mnemonicParsing="false" onAction="#switch2QuizScene" text="Next " />
+      <Button fx:id="NextButton" layoutX="263.0" layoutY="247.0" mnemonicParsing="false" onAction="#switch2MenuOptions" text="Next " />
    </children>
 </AnchorPane>

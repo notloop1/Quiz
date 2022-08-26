@@ -1,13 +1,18 @@
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Quiz extends Application {
-
     public static void main (String args []) {
         launch (args);
     }
+    @FXML
+    private Scene scene1;
+
+    @FXML
+    private Stage stage;
 
     @Override
     public void start(Stage stage) throws Exception {

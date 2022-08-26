@@ -26,6 +26,7 @@ public class QuizScene {
     int correctIndex;
     Button correctButton;
     String correctShape;
+
     @FXML
     Label scoreLabel;
 
@@ -49,6 +50,19 @@ public class QuizScene {
         shapesList.add("Pyramid");
         shapesList.add("Rhombus");
         shapesList.add("Triangle");
+        shapesList.add("Circle");
+        shapesList.add("Star");
+        shapesList.add("Heptagon");
+        shapesList.add("Heart");
+        shapesList.add("Arrow");
+        shapesList.add("Crescent");
+        shapesList.add("Cylinder");
+        shapesList.add("Right Triangle");
+        shapesList.add("Semicircle");
+        shapesList.add("Square");
+        shapesList.add("Star");
+        shapesList.add("Trapezoid");
+
 
         Random generator = new Random();
         for (int x = 0; x <= 3; x++) {
@@ -69,7 +83,7 @@ public class QuizScene {
         correctIndex = generator.nextInt(4);
         correctButton = buttons.get(correctIndex);
         correctShape = selectedShapesList.get(correctIndex); //name of correct shape
-        question.setText("What shape is " + correctShape);
+        question.setText("Which shape is the " + correctShape + "?");
 
         System.out.println(Information.score);
         scoreLabel.setText("Score: " + Information.score);
@@ -85,28 +99,29 @@ public class QuizScene {
             // Got the Stage to be able to change scenes
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 
-            // Used the FXMLLoader to load the QuizScene.fxml
-            // Done in the Quiz.java in one line by using FXMLloader.load directly - however this doesnt allow you to
-            // get the FXML loader in a variable and consequently you are unnable to access the controller from the FXML
-            // loader
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizScene.fxml"));
-
-            Parent parent = loader.load();
-
-            // Sets the score on the new controller.
-            // Uses controller in order to communicate to the scene being created
-            // the score
             Information.score += 5;
 
-            String css = getClass().getResource("Styles.css").toExternalForm();
+            if (Information.counter <= 20) {
+                // Used the FXMLLoader to load the QuizScene.fxml
+                // Done in the Quiz.java in one line by using FXMLloader.load directly - however this doesnt allow you to
+                // get the FXML loader in a variable and consequently you are unnable to access the controller from the FXML
+                // loader
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizScene.fxml"));
 
-            // Create the scene by passing the parent node to the Scene constructor
-            Scene scene2 = new Scene(parent);
+                Parent parent = loader.load();
 
-            scene2.getStylesheets().add(css);
+                String css = getClass().getResource("Styles.css").toExternalForm();
 
-            // We ask the stage to set the scene to the newly created scene
-            stage.setScene(scene2);
+                // Create the scene by passing the parent node to the Scene constructor
+                Scene scene2 = new Scene(parent);
+
+                scene2.getStylesheets().add(css);
+
+                // We ask the stage to set the scene to the newly created scene
+                stage.setScene(scene2);
+            } else {
+                // Goto the score scene
+            }
         }
         else {
             System.out.println("try harder");

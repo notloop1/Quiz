@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,18 +24,27 @@ public class MainMenu {
     private TextField usernameTextField;
 
     public void switch2MenuOptions(ActionEvent event) throws IOException {
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //the parameters are a parent (called root in code bro's the tutorial)
-        scene2 = new Scene(FXMLLoader.load(getClass().getResource("MenuOptions.fxml")));
-        stage.setScene(scene2);
-        String css = getClass().getResource("Styles.css").toExternalForm();
-        scene2.getStylesheets().add(css);
+        System.out.println(usernameTextField.getText().length());
 
-        Information.username = usernameTextField.getText();
-        Path userFilePath = Paths.get("src/userData/" + Information.username + ".txt");
+        if (usernameTextField.getText().length() == 0) {
+            Alert wrongUsernameAlert = new Alert(Alert.AlertType.ERROR);
+            wrongUsernameAlert.setContentText("The username is empty");
+            wrongUsernameAlert.setTitle("Empty username");
+            wrongUsernameAlert.show();
+        } else {
+            Information.username = usernameTextField.getText();
+            Path userFilePath = Paths.get("src/userData/" + Information.username + ".txt");
 
-        if (!Files.exists(userFilePath)) {
-            Files.createFile(userFilePath);
+            if (!Files.exists(userFilePath)) {
+                Files.createFile(userFilePath);
+            }
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            //the parameters are a parent (called root in code bro's the tutorial)
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("MenuOptions.fxml")));
+            stage.setScene(scene2);
+            String css = getClass().getResource("Styles.css").toExternalForm();
+            scene2.getStylesheets().add(css);
         }
     }
 }

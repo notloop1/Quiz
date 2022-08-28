@@ -10,46 +10,35 @@
  import java.nio.file.Paths;
  import java.nio.file.StandardOpenOption;
  import java.text.SimpleDateFormat;
+ import java.util.Arrays;
  import java.util.Date;
  import java.util.List;
- import java.util.ResourceBundle;
 
-
-
-
- public class FinalScore implements Initializable {
-
+ public class FinalScore {
      @FXML
      private ProgressBar progressBar;
 
      @FXML
      private Label scoreDisplay;
 
-     @Override
-     public void initialize(URL url, ResourceBundle resourceBundle) {
-         progressBar.setStyle("-fx-accent: #C5FBC8;");
+     public void initialize() throws IOException {
          progressBar.setProgress(Information.progressScore);
 
+         System.out.println(Information.score);
          scoreDisplay.setText(String.valueOf(Information.score));
 
+         saveScoreToFile();
+     }
+
+     private void saveScoreToFile() throws IOException {
          Path userFilePath = Paths.get("src/userData/" + Information.username + ".txt");
          //intstead of array and contents n\
-         List<String> info = null;
-         try {
-             info = Files.readAllLines(userFilePath);
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
+         List<String> info = Files.readAllLines(userFilePath);
 
          Date currentDate = new Date();
          SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/YY");
          String formattedDate = dateFormatter.format(currentDate);
-         try {
-             Files.writeString(userFilePath, formattedDate + " " + Information.score + "\n", StandardOpenOption.APPEND);
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
-
+         Files.writeString(userFilePath, formattedDate + " " + Information.score + "\n", StandardOpenOption.APPEND);
 
          for (int i = 0; i < info.size(); i++) {
              String[] line = info.get(i).split(" ");

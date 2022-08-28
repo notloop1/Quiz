@@ -3,15 +3,24 @@
     -fx-background-radius: 15px;
 }
 
-.label {
-    -fx-font-size: 15px;
-}
-.root {
-    -fx-background-color: #DCFCDE;
-}
 .button:hover {
     -fx-border-color: #ffffff;
 }
 
+.label {
+   -fx-font-size: 15px;
+}
+
+#scoreDisplay {
+   -fx-font-size: 36px;
+}
+
+.root {
+    -fx-background-color: #DCFCDE;
+}
+
+.progress-bar {
+    -fx-accent: #C5FBC8;
+}
 
 

@@ -36,7 +36,6 @@ public class MainMenu {
         String css = getClass().getResource("Styles.css").toExternalForm();
         scene2.getStylesheets().add(css);
 
-
         Information.username = usernameTextField.getText();
         Path userFilePath = Paths.get("src/userData/" + Information.username + ".txt");
 

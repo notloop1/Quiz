@@ -43,7 +43,7 @@ public class MainMenu {
             //the parameters are a parent (called root in code bro's the tutorial)
             scene2 = new Scene(FXMLLoader.load(getClass().getResource("MenuOptions.fxml")));
             stage.setScene(scene2);
-            String css = getClass().getResource("Styles.css").toExternalForm();
+            String css = getClass().getResource("styles/" + Information.chosenStyle + ".css").toExternalForm();
             scene2.getStylesheets().add(css);
         }
     }

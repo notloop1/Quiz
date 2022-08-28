@@ -19,7 +19,7 @@ public class Quiz extends Application {
         //create a scene, one needed for each page of the quiz
         Scene scene1 = new Scene(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
         stage.setScene(scene1);
-        String css = getClass().getResource("Styles.css").toExternalForm();
+        String css = getClass().getResource("styles/" + Information.chosenStyle + ".css").toExternalForm();
         scene1.getStylesheets().add(css);
         stage.show();
     }

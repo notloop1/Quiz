@@ -1,0 +1,26 @@
+.button {
+    -fx-background-color: #C5FBC8;
+    -fx-background-radius: 15px;
+}
+
+.button:hover {
+    -fx-border-color: #ffffff;
+}
+
+.label {
+   -fx-font-size: 15px;
+}
+
+#scoreDisplay {
+   -fx-font-size: 36px;
+}
+
+.root {
+    -fx-background-color: #d6e6ff;
+}
+
+.progress-bar {
+    -fx-accent: #C5FBC8;
+}
+
+

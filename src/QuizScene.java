@@ -113,7 +113,7 @@ public class QuizScene {
                 // Goto the score scene
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalScore.fxml"));
                 Parent parent = loader.load();
-                String css = getClass().getResource("Styles.css").toExternalForm();
+                String css = getClass().getResource("styles/" + Information.chosenStyle + ".css").toExternalForm();
                 Scene FinalScore = new Scene(parent);
                 FinalScore.getStylesheets().add(css);
                 stage.setScene(FinalScore);

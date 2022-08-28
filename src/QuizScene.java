@@ -27,6 +27,7 @@ public class QuizScene {
     Button correctButton;
     String correctShape;
 
+
     @FXML
     Label scoreLabel;
 
@@ -93,13 +94,14 @@ public class QuizScene {
     @FXML
     public void buttonClicked (ActionEvent event) throws IOException {
         Button clickedButton = (Button) event.getSource(); //casting of button
-        if (clickedButton == correctButton) {
-            System.out.println("bosa");
+        Information.counter +=1;
 
+        if (clickedButton == correctButton) {
             // Got the Stage to be able to change scenes
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 
             Information.score += 5;
+            Information.progressScore += 0.05;
 
             if (Information.counter <= 20) {
                 // Used the FXMLLoader to load the QuizScene.fxml
@@ -121,10 +123,33 @@ public class QuizScene {
                 stage.setScene(scene2);
             } else {
                 // Goto the score scene
+
+
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FinalScore.fxml"));
+                Parent parent = loader.load();
+                String css = getClass().getResource("Styles.css").toExternalForm();
+                Scene FinalScore = new Scene(parent);
+                FinalScore.getStylesheets().add(css);
+                stage.setScene(FinalScore);
+
             }
         }
         else {
-            System.out.println("try harder");
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("QuizScene.fxml"));
+
+            Parent parent = loader.load();
+
+            String css = getClass().getResource("Styles.css").toExternalForm();
+
+            // Create the scene by passing the parent node to the Scene constructor
+            Scene scene2 = new Scene(parent);
+
+            scene2.getStylesheets().add(css);
+
+            // We ask the stage to set the scene to the newly created scene
+            stage.setScene(scene2);
         }
 
     }
